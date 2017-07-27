@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxI-hj-HGv">
-                                <rect key="frame" x="166" y="65" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxI-hj-HGv">
+                                <rect key="frame" x="82" y="65" width="224" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,23 +40,38 @@
                                     <constraint firstAttribute="width" constant="70" id="UF6-qP-ybH"/>
                                 </constraints>
                                 <state key="normal" title="send"/>
+                                <connections>
+                                    <action selector="didTapSend:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vib-uH-kJ3"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="success!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah2-9v-6gQ">
+                                <rect key="frame" x="82" y="271" width="224" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="z9o-ai-J1m" secondAttribute="trailing" constant="90" id="2hW-uf-LWx"/>
                             <constraint firstItem="gxI-hj-HGv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="5vQ-nc-cQs"/>
                             <constraint firstItem="z9o-ai-J1m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="90" id="FIk-zy-m9T"/>
-                            <constraint firstItem="gxI-hj-HGv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="150" id="Vjg-to-wRB"/>
+                            <constraint firstItem="gxI-hj-HGv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="66" id="Vjg-to-wRB"/>
                             <constraint firstItem="NQN-Nq-gDT" firstAttribute="top" secondItem="z9o-ai-J1m" secondAttribute="bottom" constant="37" id="mk5-eP-n7X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gxI-hj-HGv" secondAttribute="trailing" constant="151" id="s9I-Dd-cct"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gxI-hj-HGv" secondAttribute="trailing" constant="53" id="s9I-Dd-cct"/>
                             <constraint firstItem="z9o-ai-J1m" firstAttribute="top" secondItem="gxI-hj-HGv" secondAttribute="bottom" constant="36" id="uoB-yu-1yR"/>
                             <constraint firstItem="NQN-Nq-gDT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zQk-Jh-Ssl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="phoneNoTF" destination="z9o-ai-J1m" id="sJL-qT-8od"/>
+                        <outlet property="successLabel" destination="ah2-9v-6gQ" id="cWW-9s-6ky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>

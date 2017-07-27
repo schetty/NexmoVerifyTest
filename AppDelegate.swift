@@ -8,9 +8,11 @@
 
 import UIKit
 import NexmoVerify
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
 
     var window: UIWindow?
 
@@ -18,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class AppDelegate: UIResponder, UIApplicationDelegate {
         func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             // Start up the NexmoClient with your application key(id) and your shared secret key
-            NexmoClient.start(applicationId: "9baef0cd", sharedSecretKey: "483ede94ed051c94")
+            NexmoClient.start(applicationId: appId, sharedSecretKey: sharedKey)
+            FirebaseApp.configure()
+            return true
         }
     }
 
