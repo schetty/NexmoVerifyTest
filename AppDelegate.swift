@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
         
-        private var appId = "9baef0cd"
-        private var sharedKey = "483ede94ed051c94"
+        private var appId = "5131d721-3f76-453f-ac78-f6ba89c785ff"
+        private var sharedKey = "78e562f458f1252"
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
             

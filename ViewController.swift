@@ -10,7 +10,7 @@ import UIKit
 import NexmoVerify
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextViewDelegate {
     
   //  #pragma mark : IB OUTLETS
     
@@ -19,18 +19,43 @@ class ViewController: UIViewController {
     @IBOutlet weak var addPhoneNoOrPinLabel: UILabel!
     
     
-   // #pragma mark : IB ACTIONS
+    // #pragma mark : IB ACTIONS
     @IBAction func didTapSend(_ sender: Any) {
-        sendPhoneNumberToFirbase()
-        successLabel.text = "Sending you a Pin"
-        successLabel.isHidden = false
-        let result = verifyUser()
-        if (result == true) {
-            successLabel.text = "Please enter your pin"
+        if ((phoneNoTF.text?.characters.count)! > 4) {
+            sendPhoneNumberToFirbase()
+            successLabel.text = "Sending you a Pin"
+            successLabel.isHidden = false
+            let result = verifyUser()
+            if (result == true) {
+                successLabel.text = "Please enter your pin"
+            }
+        }
+        else if (phoneNoTF.text?.characters.count == 4){
+           let response = VerifyClient.checkPinCode(phoneNoTF.text!)
+            if (response != nil) {
+                successLabel.isHidden = false
+            }
+        }
+        
+        else {
+            let alert = UIAlertView()
+            alert.title = "Error"
+            alert.message = "Something went wrong"
+            alert.addButton(withTitle: "OK")
+            alert.show()
         }
     }
+    
+    /**
+        Clears the TextField after Editing
+    **/
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        phoneNoTF.text = ""
+    }
 
-    // #pragma mark : Firebase write to database singeton vars
+    /**
+    Firebase write to database singeton vars
+    **/
     var ref : DatabaseReference?
     
     
@@ -38,10 +63,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         successLabel.isHidden = true
-
+        phoneNoTF.delegate = self as? UITextFieldDelegate
     }
 
-    
+    /* 
+     Sends phone number entered to Firebase
+    */
     func sendPhoneNumberToFirbase() {
         ref =  Database.database().reference()
         if (phoneNoTF.text != "") {
@@ -50,6 +77,10 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    /**
+     Retrieves phone Numbers from FireBase
+     **/
     func getPhoneNumber() -> String {
         ref =  Database.database().reference()
         var phoneStr = ""
@@ -65,6 +96,7 @@ class ViewController: UIViewController {
         return phoneStr
     }
     
+    
     /**
      Verifies user phone number and their pin number sent via sms 
     **/
@@ -79,7 +111,7 @@ class ViewController: UIViewController {
                                      onUserVerified: {
                                         // Called when the user has been successfully verified.
                                         
-                                        let success = "succeeded"
+    
                                         self.addPhoneNoOrPinLabel.text = "Enter Your Pin"
                                         if (self.phoneNoTF.text != "") {
                                             VerifyClient.checkPinCode(self.addPhoneNoOrPinLabel.text!) }
@@ -101,4 +133,6 @@ class ViewController: UIViewController {
     
 
 }
+
+
 
