@@ -65,6 +65,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addPhoneNoOrPinLabel" destination="gxI-hj-HGv" id="0Fv-zm-GZx"/>
                         <outlet property="phoneNoTF" destination="z9o-ai-J1m" id="sJL-qT-8od"/>
                         <outlet property="successLabel" destination="ah2-9v-6gQ" id="cWW-9s-6ky"/>
                     </connections>
